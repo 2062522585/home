@@ -55,7 +55,7 @@
 				})
 			},
 			handleShow(){
-				this.$router.push("/product");
+				this.$router.push("/shopping");
 			},
 			showSort(){
 				let div = document.querySelector(".sortbox");

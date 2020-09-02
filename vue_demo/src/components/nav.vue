@@ -50,7 +50,7 @@
 			</div>
 			<div class="usercontent">
 				<router-link to="/person" class="iconfont usericon">&#xe649;</router-link>
-				<router-link to="/shopping" class="iconfont usericon">&#xe69a;</router-link>
+				<router-link to="/payfor" class="iconfont usericon">&#xe69a;</router-link>
 				<router-link to="/userlogin" class="el-icon-bell usericon"></router-link>
 			</div>
 		</div>
