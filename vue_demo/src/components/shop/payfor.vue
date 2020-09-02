@@ -6,7 +6,7 @@
         <div class="h3-num">
           <span>购物袋合计</span>
           <span v-text="timess"></span>
-          <span>个商品</span>
+          个商品
         
         </div>
         <h3 class="hww2">￥</h3>
@@ -15,15 +15,15 @@
       <p>
         <span>亲爱的顾客，各个地区的商品库存状态有所区别，购物袋内库存不足的商品将自动移入心愿单，不便之处敬请谅解。</span>
       </p>
-      <button type="button" class="payfor">立即结算</button>
+      <button type="button" class="payfor" @click="payfoumoney">立即结算</button>
     </div>
     <div class="goodsmsg" v-for="item in shoparr" :key="item.id">
       <img :src="item.myimg" alt />
       <div class="shoppdata">
         <h3>{{item.brand}}</h3>
         <span>{{item.name}}</span>
-        <h3>￥{{item.price}}</h3>
-        <h3 class="sss">￥{{item.zongjia}}</h3>
+        <h3 class="aaa">￥{{item.price}}</h3>
+      
       </div>
       <div class="xiala">
         <template>
@@ -40,6 +40,7 @@
         <br />
         <button @click="changdata(item.num,item.id,item.price)" class="queding">确定</button>
         <i class="el-icon-delete" @click="deletedata(item.id)"></i>
+          <h3 class="sss">￥{{item.zongjia}}</h3>
       </div>
     </div>
   </div>
@@ -81,6 +82,12 @@ export default {
  
 
   methods: {
+
+    payfoumoney(){
+     alert("我穷的都吃土了，还有钱买这玩意儿？")
+    },
+
+
     changdata(numdata, a, price) {
       this.$http
         .post("/shoppingxiugai", {
@@ -166,7 +173,7 @@ export default {
 .hww2{
   margin-left: 380px;
 }
-.h3-num span{
+.h3-num{
          font-size: 18px;
          font-weight: bold;
 }
@@ -226,10 +233,16 @@ export default {
   font-size: 20px;
 }
 .sss {
+  display: inline-block;
   width: 100px;
+  margin-top: 20px;
   font-size: 15px;
   /* height: 50px; */
-  margin-left: 370px;
+  /* margin-left: 100px; */
+  margin-left: 10px;
+}
+.aaa{
+display: inline-block;
 }
 .queding {
   margin-top: 10px;

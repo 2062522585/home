@@ -62,7 +62,7 @@ export default {
          
      created(){
            this.$http.post("/shopping",{
-             id:this.id
+             id:this.$route.query.id
        }).then(res=>{
             this.shoppingArr=res.data
             this.brand=this.shoppingArr[0].brand

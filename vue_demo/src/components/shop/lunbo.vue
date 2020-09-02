@@ -3,9 +3,9 @@
   <div class="div">
     <link rel="stylesheet" href="http://at.alicdn.com/t/font_1765556_egxm6ar6k7.css">
      <div class="shopping-lunbo">
-				<span @click="right" class="span1 iconfont icon-zhaozuo1"></span>      
-					<img v-bind:src="arr[i]" alt="">
-					<span @click="left" class="span2 iconfont icon-zhaoyou1"></span>
+				<!-- <span @click="right" class="span1 iconfont icon-zhaozuo1"></span>       -->
+					<img v-bind:src="myimg" alt="">
+					<!-- <span @click="left" class="span2 iconfont icon-zhaoyou1"></span> -->
 					
 			</div>
        
@@ -17,30 +17,31 @@ import Bus from "../../js/bus.js"
 export default {
   data:function(){
     return{
-        i:0,
-			arr:["https://www.ikea.cn/cn/zh/images/products/billy-bookcase-white__0625599_PE692385_S5.JPG?f=xxs","https://www.ikea.cn/cn/zh/images/products/billy-bookcase-with-panel-glass-doors__0667793_PE714087_S5.JPG?f=xxs","https://www.ikea.cn/cn/zh/images/products/slattum-upholstered-bed-frame-knisa-light-gray__0768244_PE754388_S5.JPG?f=xxs","https://www.ikea.cn/cn/zh/images/products/malm-bed-frame-high-brown-stained-ash-veneer-luroey__0638589_PE699024_S5.JPG?f=xxs"]
+		i:0,
+		myimg:""
+		// arr:[]
 }
   },
-  methods:{
-    right(){
+//   methods:{
+//     right(){
 			
-				if(this.i==this.arr.length-1)
-				  this.i=0;
-				  else
-				  this.i=this.i+1; 
+// 				if(this.i==this.arr.length-1)
+// 				  this.i=0;
+// 				  else
+// 				  this.i=this.i+1; 
 				  
-			},
-			left(){
-				if(this.i==0)
-				  this.i=this.arr.length-1;
-				  else
-				  this.i=this.i-1;
-			},
-			 },
+// 			},
+// 			left(){
+// 				if(this.i==0)
+// 				  this.i=this.arr.length-1;
+// 				  else
+// 				  this.i=this.i-1;
+// 			},
+// 			 },
 			 created(){
 				   Bus.$on("sentmyimg",(mysrc)=>{
-					   this.arr[0]=mysrc
-					   console.log(this.arr[0])
+					   this.myimg=mysrc
+					//    console.log(this.myimg)
                  })
 
 			 }
