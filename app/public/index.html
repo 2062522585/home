@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/lunbo.js" type="text/javascript" charset="utf-8"></script>
+		<title>校园之星评选网</title>
+	</head>
+	<body>
+		<div class="head">
+			<div class="header">
+				<img src="img/head.jpg" >
+			</div>
+		</div>
+		<div class="nav">
+			<div class="nav-title">
+				<ul>
+					<li onclick="home()">首页</li>
+					<li onclick="person()">个人中心</li>
+				</ul>
+				<ul class="nav-right">
+					<li id="head-img"><img src="img/1.jpg" ></li>
+					<li id="login" onclick="showlogin()">登录</li>
+					<li id="register" onclick="showregister()">注册</li>
+					<li id="logout" onclick="logout()">注销</li>
+				</ul>
+			</div>
+		</div>
+		<div class="body">
+			<div class="body-nav">
+				<ul>
+					<li onclick="introduce()">活动介绍</li>
+					<li onclick="join()">报名参赛</li>
+					<li onclick="help()">助力打CALL</li>
+				</ul>
+			</div>
+			<div class="lunbo">
+				<div>
+					<img style="display: block;" src="img/1.jpg" >
+					<img src="img/2.jpg" >
+					<img src="img/3.jpg" >
+					<img src="img/4.jpg" >
+				</div>
+				<ul class="point">
+					<li style="background-color: #f00;"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+				<div class="arrow left">&lt;</div>
+				<div class="arrow right">&gt;</div>
+			</div>
+			<div class="participate">
+				<div>
+					<input type="file" id="pick" /><br>
+					<input type="text" id="name" placeholder="请输入姓名" /><br>
+					<input type="radio" name="sex" value="男" checked="checked"/>男
+					<input type="radio" name="sex" value="女" />女<br>
+					<input type="text" id="age" placeholder="请输入年龄" /><br>
+					<button onclick="submit()">提交</button>
+				</div>
+			</div>
+			<div class="show">
+				<div class="shower"></div>
+			</div>
+		</div>
+		<div class="person">
+			<div class="avatar">
+				<img id="avatar-img" src="img/1.jpg" title="头像" >
+			</div>
+			<div>
+				<ul>
+					用户名：<li class="p-username"></li>
+					密码：<li class="p-pwd"></li>
+				</ul>
+			</div>
+			<button class="update" onclick="updateshow()">修改</button>
+			<div class="modify">
+				<input type="file" id="choose" />
+				<input type="text" id="newusername" placeholder="输入新用户名" />
+				<input type="password" id="newpwd" placeholder="输入新密码" />
+				<button onclick="update()">确认修改</button>
+				<button onclick="cancel()">取消</button>
+			</div>
+		</div>
+		<div class="login">
+			<h2>登&nbsp;&nbsp;&nbsp;录</h2>
+			<input type="text" placeholder="请输入账号" id="username" />
+			<input type="password" placeholder="请输入密码" id="pwd" />
+			<input type="button" value="登录" onclick="login()"/>
+			<input type="button" value="注册" onclick="showregister()" />
+			<input type="button" value="关闭" onclick="close1()" />
+		</div>
+		<div class="register">
+			<h2>注&nbsp;&nbsp;&nbsp;册</h2>
+			<input type="text" placeholder="请输入账号" id="rusername" />
+			<input type="password" placeholder="请输入密码" id="rpwd" />
+			<input type="button" value="注册" onclick="register()" />
+			<input type="button" value="关闭" onclick="close2()" />
+		</div>
+		
+		<script type="text/javascript">
+			window.onload = function(){
+				let login1 = document.getElementById("login");
+				let register = document.getElementById("register");
+				let head_img = document.getElementById("head-img");
+				let username = getValue("username");
+				if(username){
+					login1.style.display = "none";
+					register.style.display = "none";
+					head_img.style.display = "inline-block";
+					axios.post('/selectimg',{
+						username:getValue("username")
+					}).then(res => {
+						head_img.firstElementChild.setAttribute('src',res.data[0].avatar);
+					}).catch(e => {
+						console.log(e);
+					})
+				}else{
+					login1.style.display = "inline-block";
+					register.style.display = "inline-block";
+					head_img.style.display = "none";
+				}
+			}
+		</script>
+	</body>
+</html>
