@@ -51,7 +51,7 @@
 			<div class="usercontent">
 				<router-link to="/person" class="iconfont usericon">&#xe649;</router-link>
 				<router-link to="/payfor" class="iconfont usericon">&#xe69a;</router-link>
-				<router-link to="/userlogin" class="el-icon-bell usericon"></router-link>
+				<router-link to="/userlogin" class="el-icon-bell usericon" id="aaa"></router-link>
 			</div>
 		</div>
 		<div class="search">
@@ -121,8 +121,19 @@
 	.navtop {
 		float: left;
 	}
-
+	
+	 .iconfont{
+		   font-size: 20px;
+		   margin-left: 10px;
+	   }
+	   #aaa{
+		   
+		   font-size: 20px;
+		   margin-left: 10px;
+	   }
+	
 	.usercontent {
+		margin-top: 18px;
 		width: 100px;
 		height: 40px;
 		float: right;

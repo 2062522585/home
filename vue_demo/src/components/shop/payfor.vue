@@ -116,6 +116,7 @@ export default {
         .catch((err) => {
           console.log("axios访问失败");
         });
+				this.$router.go(0);
     },
     shoppingshow() {
       this.$http

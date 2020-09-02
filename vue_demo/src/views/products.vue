@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="box1">
 		<h1>"{{$route.query.keyword}}"</h1>
 		<div class="sort">
 			<button @click="showSort">排序方式</button>
@@ -18,7 +18,7 @@
 			<button>形成</button>
 			<button>更多筛选</button>
 		</div>
-		<ul v-for="item in productArr" :key="item.id" @click="handleShow">
+		<ul v-for="item in productArr" :key="item.id" @click="handleShow(item.id)">
 			<li>
 				<img :src="item.myimg" alt="">
 			</li>
@@ -54,8 +54,8 @@
 					console.log(e);
 				})
 			},
-			handleShow(){
-				this.$router.push("/shopping");
+			handleShow(value){
+				this.$router.push(`/shopping?id=${value}`);
 			},
 			showSort(){
 				let div = document.querySelector(".sortbox");
@@ -136,5 +136,10 @@
 		left: 215px;
 		top: 5px;
 		border-radius: 50%;
+	}
+	
+	.box1{
+		width: 90%;
+		margin: 0 auto;
 	}
 </style>

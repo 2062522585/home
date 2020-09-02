@@ -118,7 +118,6 @@
 <script>
 var user=document.cookie.split(";");
 console.log(user)
-alert(user.username)
 // function getCookie(username) {
 //   var arrStr = document.cookie.split("; ");
 //   console.log(arrStr)
