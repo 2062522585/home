@@ -1,5 +1,5 @@
 <template>
-	<div class="home">
+	<div class="home" >
 		<banner></banner>
 		<div class="carousel__gradient-divider"></div>
 		<div class="wrap">
@@ -19,11 +19,11 @@
 			<hr>
 			<sixth></sixth>
 			<hr>
-			<seventh></seventh>
-			<!-- <hr> -->
-			<eigth></eigth>
 		</div>
+		<seventh></seventh>
+		<eigth></eigth>
 		<myfooter></myfooter>
+		<el-backtop></el-backtop>
 	</div>
 </template>
 
@@ -36,7 +36,7 @@
 	import sixth from '../components/home/sixth.vue';
 	import seventh from '../components/home/seventh.vue';
 	import eigth from '../components/home/eigth.vue';
-	import myfooter from '../components/home/footer.vue';
+	import myfooter from '../components/footer.vue';
 	export default {
 		name: 'Home',
 		components: {
@@ -48,18 +48,14 @@
 			sixth,
 			seventh,
 			eigth,
-			myfooter
+			myfooter,
 		},
 		created() {
-			// console.log(this.$store.state.home.secArr);
 		}
 	}
 </script>
 <style scoped="scoped">
-	/* *{
-		margin: 0;
-		padding: 0;
-	} */
+
 	.wrap {
 		width: 1280px;
 		margin: 0 auto;

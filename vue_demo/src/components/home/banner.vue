@@ -1,7 +1,7 @@
 <template>
 	<div class="banner">
 		 <el-carousel :interval="3000" arrow="always">
-		    <el-carousel-item v-for="item in mysrc " :key="item.id">
+		    <el-carousel-item v-for="item in $store.state.home.bannerArr " :key="item.id">
 			  <img :src="item.img" alt="" >	  
 		    </el-carousel-item>
 		  </el-carousel>
@@ -10,15 +10,7 @@
 
 <script>
 	export default {
-		data(){
-			return {
-				mysrc:""
-			}
-		},
-		created(){
-			this.mysrc = this.$store.state.home.bannerArr
-			console.log(this.mysrc);
-		}
+
 	}
 </script>
 

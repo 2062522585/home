@@ -1,8 +1,5 @@
 import banner_a from '../../public/img/home/banner_a.webp';
 import banner_b from '../../public/img/home/banner_b.webp';
-import banner_c from '../../public/img/home/banner_c.webp';
-import banner_d from '../../public/img/home/banner_d.webp';
-import banner_e from '../../public/img/home/banner_e.webp';
 import banner_f from '../../public/img/home/banner_f.jpg';
 import banner_g from '../../public/img/home/banner_g.gif';
 import sec_a from '../../public/img/home/second-a.jpg';
@@ -47,18 +44,6 @@ export default {
 			{
 				id:2,
 				img:banner_b
-			},
-			{
-				id:3,
-				img:banner_c
-			},
-			{
-				id:4,
-				img:banner_d
-			},
-			{
-				id:5,
-				img:banner_e
 			},
 			{
 				id:6,

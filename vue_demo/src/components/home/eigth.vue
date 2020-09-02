@@ -75,6 +75,8 @@
 		width: 50%;
 		margin: 0 auto;
 	}
+	
+
 	.el-collapse{
 		display: flex;
 		flex-wrap: wrap;

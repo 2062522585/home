@@ -10,12 +10,16 @@
 			<div class="fourth_right">
 				<img :src="imgup" class="img_up" />
 				<img :src="imgdown" class="img_down" />
-				<div class="btn">
-					<el-button :plain="true">更多当季新品<i>&nbsp;&nbsp;&gt;</i></el-button>
+				<div class="mybtn">
+					<btn>更多当季新品</btn>
 				</div>
+				
 			</div>
 		</div>
 		
+		<div class="fourProduct">
+			<product :kw="keyword" @myevent="getValue"></product>
+		</div>
 	</div>
 </template>
 
@@ -23,15 +27,31 @@
 	import fourth_a from '../../../public/img/home/fourth_a.webp'
 	import fourth_b from '../../../public/img/home/fourth_b.webp'
 	import fourth_c from '../../../public/img/home/fourth_c.webp'
+	import product from '@/components/products.vue'
+	import btn from './btn_white.vue';
 	export default {
 		data() {
 			return {
 				mysrc: fourth_a,
 				imgup: fourth_b,
-				imgdown: fourth_c
+				imgdown: fourth_c,
+				keyword:'沙发',
+				
 			}
-
-		}
+		},
+		components:{
+			product,
+			btn
+		},
+		created(){
+			console.log(this.$route);
+			console.log(this.$router);
+		},
+		methods:{
+			getValue(val){
+				console.log(val);
+			}
+		},
 	}
 </script>
 
@@ -48,7 +68,7 @@
 		font-size: 26px;
 		color: #000000;
 		text-align: left;
-		margin: 30px 65px;
+		margin: 50px 65px;
 	}
 
 	.fourth img {
@@ -68,7 +88,10 @@
 		margin-top: 25px;
 	}
 
-	.btn {
-		margin: 32px 38%;
+	.mybtn{
+		margin: 27px 37%;
+	}
+	.fourProduct{
+		margin-bottom: 50px;
 	}
 </style>

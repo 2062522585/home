@@ -29,10 +29,11 @@
 		flex-wrap: wrap;
 		box-sizing: border-box;
 		background-color: #f2f2f2;
+		padding: 0 10%;
 	}
 
 	.seventh ul li {
-		width: 24.3%;
+		width: 28.2%;
 		list-style: none;
 		margin: 30px auto;
 		background-color: white;

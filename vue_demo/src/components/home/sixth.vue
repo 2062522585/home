@@ -30,7 +30,7 @@
 	 h2{
 		font-size: 26px;
 		color: #000000;
-		margin: 25px 85px -20px;
+		margin: 50px 85px -20px;
 	}
 	.sixth_up ul {
 		width: 100%;

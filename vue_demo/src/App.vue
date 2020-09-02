@@ -1,39 +1,36 @@
 <template>
-  <div id="app">
-    <div class="nav">
-		
-    </div>
-	<mynav></mynav>
-    <!-- <router-view/> -->
-  </div>
+	<div id="app">
+		<mynav></mynav>
+		<router-view></router-view>
+	</div>
 </template>
+
 <script>
 	import mynav from './components/nav.vue'
 	export default {
-		components:{
+		components: {
 			mynav
 		}
 	}
 </script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+	#app {
+		font-family: Avenir, Helvetica, Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		// text-align: center;
+		color: #2c3e50;
+		margin: 0 auto;
+	}
 
-#nav {
-  padding: 30px;
+	.nav {
+		width: 90%;
+		margin: 0 auto;
+	}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+	a {
+		text-decoration: none;
+		color: rgb(64, 122, 177);
+	}
 </style>
