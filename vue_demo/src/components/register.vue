@@ -26,7 +26,7 @@
           <el-input placeholder="请输入密码" v-model="pwd" show-password></el-input>
         </div>
       </el-form>
-      <hr />
+      <!-- <hr /> -->
       <div>
         <el-checkbox v-model="checked">我承认我已知悉 隐私政策</el-checkbox>
       </div>
@@ -82,6 +82,7 @@ export default {
 <style scoped>
 .content {
   text-align: center;
+	margin-top: 50px;
 }
 .el-input {
   width: 650px;

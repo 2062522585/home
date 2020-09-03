@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<router-link to="/shopping">
 		<ul v-for="item in productArr" :key="item.id" :kw="keyword" @click="getId(item.id)">
 			<li>
 				<img :src="item.myimg" alt="">
@@ -10,8 +9,6 @@
 			<li>{{item.id}}</li>
 			<li>&yen;{{item.price}}</li>
 		</ul>
-		</router-link>
-		
 	</div>
 </template>
 
@@ -39,7 +36,8 @@
 		},
 		methods:{
 			getId(num){
-				this.$emit("myevent",num)
+				this.$emit("myevent",num);
+				this.$router.push(`/shopping?id=${num}`);
 			}
 		}
 	}

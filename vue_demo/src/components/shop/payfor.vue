@@ -82,7 +82,6 @@ export default {
  
 
   methods: {
-
     payfoumoney(){
      alert("我穷的都吃土了，还有钱买这玩意儿？")
     },

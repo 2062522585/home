@@ -43,10 +43,6 @@
 			product,
 			btn
 		},
-		created(){
-			console.log(this.$route);
-			console.log(this.$router);
-		},
 		methods:{
 			getValue(val){
 				console.log(val);

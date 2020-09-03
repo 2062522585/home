@@ -1,6 +1,6 @@
 <template>
 	<div id="app">
-		<mynav></mynav>
+		<mynav v-if="keepShow"></mynav>
 		<router-view></router-view>
 	</div>
 </template>
@@ -10,6 +10,21 @@
 	export default {
 		components: {
 			mynav
+		},
+		data:function(){
+			return {
+				keepShow:true
+			}
+		},
+		watch:{
+			"$route.path":function(){
+				console.log(this.$route)
+				if(this.$route.path == "/userlogin" || this.$route.path == "/register"){
+					this.keepShow = false;
+				}else{
+					this.keepShow = true;
+				}
+			}
 		}
 	}
 </script>
