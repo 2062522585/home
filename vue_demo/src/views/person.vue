@@ -3,7 +3,7 @@
     <div>
       <div class="welcomeBox">
         <p>我的个人档案</p>
-        <h1>你好,</h1>
+        <h1>你好,{{uname}}</h1>
       </div>
       <div class="content">
         <div class="content-middle">
@@ -82,51 +82,115 @@
         </div>
         <hr class="liner" />
       </div>
-      <div class="usermsg">
+      <div class="usermsg" v-for="item in list" :key="item.id" v-on:click="hideTooltip">
         <div class="usertitle">
           <i class="el-icon-user"></i>
           <span>账户</span>
+          <el-link icon="el-icon-edit">编辑</el-link>
         </div>
         <div>
           <h3>个人信息</h3>
+
+          <div id="main" v-cloak>
+            <div class="tooltip" v-on:click.stop v-if="show_tooltip">
+              <!-- <input type="text" v-model="text_content" /> -->
+            </div>
+            <div>
+              <i class="el-icon-user"></i>
+              <div id="usname" ref="text" contenteditable="true">{{item.username}}</div>
+            </div>
+          </div>
+          <hr />
+          <div>
+            <i class="el-icon-phone-outline"></i>
+            <span>{{item.tel}}</span>
+          </div>
         </div>
-        <div>
-          <i class="el-icon-user"></i>
-          <span>账户</span>
-        </div>
-        <hr />
-        <div>
-          <i class="el-icon-phone-outline"></i>
-          <span>dianhua</span>
-        </div>
+
         <div>
           <h3>主要地址</h3>
+          <el-link icon="el-icon-edit">编辑</el-link>
+
+          <div>
+            <i class="el-icon-location-outline"></i>
+            <span>{{item.address}}</span>
+          </div>
         </div>
-        <div>
-          <i class="el-icon-location-outline"></i>
-          <span>-</span>
-        </div>
+
         <hr />
         <div>
           <i class="el-icon-message"></i>
-          <span>邮箱</span>
+          <span>{{item.mail}}</span>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-var user=document.cookie.split(";");
-console.log(user)
-// function getCookie(username) {
-//   var arrStr = document.cookie.split("; ");
-//   console.log(arrStr)
-//   for (var i = 0; i < arrStr.length; i++) {
-//     var temp = arrStr[i].split("=");
-//     if (temp[0] == username) return unescape(temp[1]);
-//   }
-// }
-// getCookie()
+export default {
+  data() {
+    return {
+      valuetext: "",
+      user: [],
+      uname: "",
+      id: "",
+      list: "",
+      show_tooltip: false,
+      text_content: "",
+    };
+  },
+  mounted() {
+    this.uname = this.getValue("username");
+    console.log(this.uname);
+    var user = document.cookie.split(";");
+    this.user = user;
+    this.$http
+      .post("/showAllinfo", {
+        username: this.uname,
+      })
+      .then((r) => {
+        this.list = r.data;
+        console.log(this.list);
+        var myid = this.list.id;
+        console.log(myid);
+      });
+  },
+  created() {},
+
+  methods: {
+    //获取cookie
+    getValue(key) {
+      let name = key + "=";
+      let array = document.cookie.split(";");
+      for (let i = 0; i < array.length; i++) {
+        let str = array[i].trim();
+        if (str.indexOf(name) == 0) {
+          return str.substring(name.length, str.length);
+        }
+      }
+
+      return null;
+    },
+    //
+    hideTooltip: function () {
+      this.show_tooltip = false;
+
+      var newname = document.getElementById("usname").innerHTML;
+      console.log(newname);
+      this.$http
+        .post("/updateName", {
+          newname: this.newname,
+        })
+        .then((res) => {
+          alert("修改成功");
+          this.$router.push("/");
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+  },
+};
 </script>
 
 
@@ -184,6 +248,7 @@ h1 {
 .cardsitem-2,
 .cardsitem-2-1 {
   float: left;
+  margin-top: 10px;
 }
 .el-icon-document-checked:before,
 .el-icon-discount,
@@ -199,13 +264,13 @@ h1 {
   margin-top: 22px;
 }
 .cardsitem-1 {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 .cardsitem-2-1 > p {
-  margin-top: -15px;
+  margin-top: 5px;
 }
 .cardsitem-2 {
-  /* margin-left: 20px; */
+  margin-left: 20px;
   color: rgb(78, 76, 76);
   margin-top: -6px;
 }
