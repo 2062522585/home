@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/home.vue'
 
 Vue.use(VueRouter)
 
@@ -9,7 +8,7 @@ import adminpage from "../components/adminpage.vue";
 
   const routes = [
   {
-    path: '/',
+    path: '/admin',
     component:adminpage,
     beforeEnter:function(to,from,next){
       // console.log(arguments)
@@ -21,16 +20,7 @@ import adminpage from "../components/adminpage.vue";
     }
   },
   {path:"/adlogin",component:adlogin},
-  // {
-  //   path:"/signout",
-  //   name:"signout",
-  //   component: () =>
-  //       import ('../components/adlogin.vue'),
-  //   beforeEnter:function(next){
-  //     console.log(arguments)
-      
-  //   }
-  // }
+  
 ]
 
 const router = new VueRouter({

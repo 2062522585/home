@@ -36,7 +36,7 @@ export default {
                 if(res.data.status==0){
                     this.nologin=false;
                     sessionStorage.setItem("nologin",1)
-                    this.$router.push("/")
+                    this.$router.push("/admin")
                 }
                 alert(res.data.msg)
             }).catch((e)=>{
