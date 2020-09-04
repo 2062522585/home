@@ -7,8 +7,23 @@ class UserinfoService extends Service {
 		return userArr;
 	}
 	async updateUname(newname,id) {
-		let sql = "update user set name=? where id=?";
-		let r = await this.ctx.app.mysql.query(sql, [newname,newname]);
+		let sql = "update user set username=? where id=?";
+		let r = await this.ctx.app.mysql.query(sql, [newname,id]);
+		return r.affectedRows;//1
+	}
+	async updateUtel(newtel,id) {
+		let sql = "update user set tel=? where id=?";
+		let r = await this.ctx.app.mysql.query(sql, [newtel,id]);
+		return r.affectedRows;//1
+	}
+	async updateUadr(newadr,id) {
+		let sql = "update user set address=? where id=?";
+		let r = await this.ctx.app.mysql.query(sql, [newadr,id]);
+		return r.affectedRows;//1
+	}
+	async updateUmail(newmail,id) {
+		let sql = "update user set mail=? where id=?";
+		let r = await this.ctx.app.mysql.query(sql, [newmail,id]);
 		return r.affectedRows;//1
 	}
 }

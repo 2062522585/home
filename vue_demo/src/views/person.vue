@@ -88,39 +88,84 @@
           <span>账户</span>
           <el-link icon="el-icon-edit">编辑</el-link>
         </div>
+
         <div>
           <h3>个人信息</h3>
-
           <div id="main" v-cloak>
-            <div class="tooltip" v-on:click.stop v-if="show_tooltip">
-              <!-- <input type="text" v-model="text_content" /> -->
-            </div>
             <div>
               <i class="el-icon-user"></i>
-              <div id="usname" ref="text" contenteditable="true">{{item.username}}</div>
+              <div class="test" :class="{editing: isChecked }">
+                <div class="view">
+                  <label @dblclick="dbTestname(item.id)">{{ item.username }}</label>
+                </div>
+                <input
+                  v-myfoucs="isChecked"
+                  class="edit"
+                  type="text"
+                  v-model="inputStrname"
+                  @blur="inputStredname()"
+                />
+              </div>
             </div>
           </div>
           <hr />
           <div>
             <i class="el-icon-phone-outline"></i>
-            <span>{{item.tel}}</span>
+            <div>
+              <div class="test" :class="{editing: isCheckedtel }">
+                <div class="view">
+                  <label @dblclick="dbTesttel(item.id)">{{item.tel}}</label>
+                </div>
+                <input
+                  v-myfoucs="isCheckedtel"
+                  class="edit"
+                  type="text"
+                  v-model="inputStrtel"
+                  @blur="inputStredtel()"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
         <div>
           <h3>主要地址</h3>
-          <el-link icon="el-icon-edit">编辑</el-link>
-
           <div>
             <i class="el-icon-location-outline"></i>
-            <span>{{item.address}}</span>
+            <div>
+              <div class="test" :class="{editing: isCheckedadr }">
+                <div class="view">
+                  <label @dblclick="dbTestadr(item.id)">{{item.address}}</label>
+                </div>
+                <input
+                  v-myfoucs="isCheckedadr"
+                  class="edit"
+                  type="text"
+                  v-model="inputStradr"
+                  @blur="inputStredadr()"
+                />
+              </div>
+            </div>
           </div>
         </div>
 
         <hr />
         <div>
           <i class="el-icon-message"></i>
-          <span>{{item.mail}}</span>
+          <div>
+            <div class="test" :class="{editing: isCheckedmail }">
+              <div class="view">
+                <label @dblclick="dbTestmail(item.id)">{{item.mail}}</label>
+              </div>
+              <input
+                v-myfoucs="isCheckedmail"
+                class="edit"
+                type="text"
+                v-model="inputStrmail"
+                @blur="inputStredmail()"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -130,64 +175,156 @@
 export default {
   data() {
     return {
-      valuetext: "",
       user: [],
       uname: "",
       id: "",
       list: "",
-      show_tooltip: false,
-      text_content: "",
+      item: "",
+      isChecked: false,
+      isCheckedtel: false,
+      isCheckedadr: false,
+      isCheckedmail: false,
+      inputStrname: "",
+      inputStrtel: "",
+      inputStradr: "",
+      inputStrmail: "",
     };
   },
-  mounted() {
-    this.uname = this.getValue("username");
-    console.log(this.uname);
-    var user = document.cookie.split(";");
-    this.user = user;
-    this.$http
-      .post("/showAllinfo", {
-        username: this.uname,
-      })
-      .then((r) => {
-        this.list = r.data;
-        console.log(this.list);
-        var myid = this.list.id;
-        console.log(myid);
-      });
+  mounted() {},
+  created() {
+    this.get();
   },
-  created() {},
 
   methods: {
     //获取cookie
     getValue(key) {
       let name = key + "=";
       let array = document.cookie.split(";");
+      console.log(document.cookie);
       for (let i = 0; i < array.length; i++) {
         let str = array[i].trim();
         if (str.indexOf(name) == 0) {
           return str.substring(name.length, str.length);
         }
       }
-
       return null;
     },
-    //
-    hideTooltip: function () {
-      this.show_tooltip = false;
-
-      var newname = document.getElementById("usname").innerHTML;
-      console.log(newname);
+    get() {
+      this.uname = this.getValue("username");
+      console.log("old:" + this.uname);
       this.$http
-        .post("/updateName", {
-          newname: this.newname,
+        .post("/showAllinfo", {
+          username: this.uname,
         })
-        .then((res) => {
-          alert("修改成功");
-          this.$router.push("/");
-        })
-        .catch((e) => {
-          console.log(e);
+        .then((r) => {
+          this.list = r.data;
+          console.log(this.list);
         });
+    },
+    //修改名字
+    dbTestname(value) {
+      this.isChecked = true;
+      this.id = value;
+    },
+    inputStredname() {
+      this.isChecked = false;
+      if (this.inputStrname === "") {
+        alert("请输入");
+      } else {
+        this.$http
+          .post("/updateName", {
+            newname: this.inputStrname,
+            id: this.id,
+          })
+          .then((res) => {
+            document.cookie = `username=${this.inputStrname}`;
+            this.get();
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+    },
+    // 修改电话啊
+    dbTesttel(value) {
+      this.isCheckedtel = true;
+      this.id = value;
+    },
+    inputStredtel() {
+      console.log(this.inputStrtel); //打印修改的内容
+      this.isCheckedtel = false;
+      if (this.inputStrtel === "") {
+        alert("请输入电话");
+      } else {
+        this.$http
+          .post("/updateTel", {
+            newtel: this.inputStrtel,
+            id: this.id,
+          })
+          .then((res) => {
+            this.get();
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+    },
+    // 修改地址
+    dbTestadr(value) {
+      this.isCheckedadr = true;
+      this.id = value;
+    },
+    inputStredadr() {
+      console.log(this.inputStradr); //打印修改的内容
+      this.isCheckedadr = false;
+      if (this.inputStradr === "") {
+        alert("请输入地址");
+      } else {
+        this.$http
+          .post("/updateAdr", {
+            newadr: this.inputStradr,
+            id: this.id,
+          })
+          .then((res) => {
+            this.get();
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+    },
+    // 修改邮箱
+    dbTestmail(value) {
+      this.isCheckedmail = true;
+      this.id = value;
+    },
+    inputStredmail() {
+      console.log(this.inputStrmail); //打印修改的内容
+      this.isCheckedmail = false;
+      if (this.inputStrmail === "") {
+        alert("请输入地址");
+      } else {
+        this.$http
+          .post("/updateMail", {
+            newmail: this.inputStrmail,
+            id: this.id,
+          })
+          .then((res) => {
+            this.get();
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+    },
+  },
+  directives: {
+    myfoucs: {
+      update(el, binding) {
+        if (binding.value) {
+          el.focus();
+        }
+      },
     },
   },
 };
@@ -299,5 +436,38 @@ h1 {
 }
 .usertitle {
   font-size: 25px;
+}
+.el-icon-edit {
+  float: right;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+section,
+footer,
+header,
+aside,
+nav {
+  display: block;
+}
+
+.test.editing .edit {
+  display: block;
+  width: 150px;
+}
+.test.editing .edit {
+  display: block;
+  width: 150px;
+}
+
+.test.editing .view,
+.test.editingtel.view {
+  display: none;
+}
+
+.test .edit {
+  display: none;
 }
 </style>
