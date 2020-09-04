@@ -12,7 +12,7 @@ class UserinfoController extends Controller {
 		let r = await this.ctx.service.userinfoService.updateUname(newname,id);
 		this.ctx.response.body = r;
 	}
-	async updateTel() {
+  async updateTel() {
 		let newtel = this.ctx.request.body.newtel;
 		let id = this.ctx.request.body.id;
 		let r = await this.ctx.service.userinfoService.updateUtel(newtel,id);

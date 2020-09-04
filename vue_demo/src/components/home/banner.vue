@@ -14,7 +14,7 @@
 	}
 </script>
 
-<style>
+<style scoped="scoped">
 	.banner{
 		width: 1280px;
 		margin: 50px auto;

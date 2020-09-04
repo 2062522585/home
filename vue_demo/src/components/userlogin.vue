@@ -33,10 +33,30 @@ export default {
           let list = res.data;
           if (list.length == 1) {
             let user = list[0];
-            document.cookie = "username=" + user.username;
-
-            document.cookie = "password=" + user.password;
-            alert("登陆成功");
+            // document.cookie = user.username;
+            document.cookie = `username=${res.data[0].username}`;
+            // document.cookie = `password=${res.data[0].pwd}`;
+            console.log(document.cookie)  
+	              alert("登陆成功");
+		let ass=2
+            if(ass==this.$route.query.idname){
+                
+             this.$router.push({
+                path: "/shopping",  
+                query:{
+                   username:res.data[0].username,
+                   id:this.$route.query.ssss
+                }
+            });
+            }else{
+                       this.$router.push({
+                   path:"/",
+                   query:{
+                      username:res.data[0].username
+                   }
+            });
+               
+            }
           } else {
             alert("用户名或密码错误");
           }

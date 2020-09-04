@@ -14,5 +14,11 @@ class ProductsService extends Service{
 			return result;
 
 	}
+  async getSort(obj) {
+		var sql = `select *  from classify`;
+		var result = await this.app.mysql.query(sql);
+		return result;
+	
+	}
 }
 module.exports = ProductsService;

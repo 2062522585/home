@@ -1,13 +1,14 @@
 <template>
 
-	<div>
+	<div class="goods">
+		<a href="#">
+			<p @click="goback">返回</p>
+		</a>
 		<div class="div">
 			<lunbo></lunbo>
 			<submitshopping></submitshopping>
 		</div>
 		<div></div>
-
-
 	</div>
 </template>
 
@@ -19,9 +20,9 @@
 			lunbo,
 			submitshopping
 		},
-		data:function(){
-			return {
-				arr:[]
+		methods:{
+			goback(){
+				this.$router.go(-1);
 			}
 		}
 	}

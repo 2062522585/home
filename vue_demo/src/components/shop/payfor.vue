@@ -15,7 +15,8 @@
       <p>
         <span>亲爱的顾客，各个地区的商品库存状态有所区别，购物袋内库存不足的商品将自动移入心愿单，不便之处敬请谅解。</span>
       </p>
-      <button type="button" class="payfor" @click="payfoumoney">立即结算</button>
+      <!-- <button type="button" class="payfor" @click="payfoumoney">立即结算</button> -->
+      <el-button type="text"  class="payfor" @click="payfoumoney(shopzongjia)">立即结算</el-button>
     </div>
     <div class="goodsmsg" v-for="item in shoparr" :key="item.id">
       <img :src="item.myimg" alt />
@@ -42,7 +43,11 @@
         <i class="el-icon-delete" @click="deletedata(item.id)"></i>
           <h3 class="sss">￥{{item.zongjia}}</h3>
       </div>
+      
     </div>
+        
+     
+
   </div>
 </template>
      
@@ -79,11 +84,39 @@ export default {
     this.shoppingshow();            
          
   },
+
+
  
 
   methods: {
-    payfoumoney(){
-     alert("我穷的都吃土了，还有钱买这玩意儿？")
+        
+    payfoumoney(money){
+      console.log(money)
+      this.$prompt(`请支付${money}元`, '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          inputPattern: new RegExp(money),
+          inputErrorMessage: '金额不正确'
+        }).then(({ value }) => {
+          this.$message({
+            type: 'success',
+            message: '你的金额是: ' + value
+          });
+                this.$http.post("/shoppingclear", {
+               }).then((res) => {
+          // this.shoparr = res.data;
+          this.shoppingshow();
+            this.$router.go(0)
+              }).catch((err) => {
+          console.log("axios访问失败");
+                    });
+
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });       
+        });
     },
 
 
@@ -111,16 +144,19 @@ export default {
         })
         .then((res) => {
           this.shoppingshow();
+          this.$router.go(0)
         })
         .catch((err) => {
           console.log("axios访问失败");
         });
-				this.$router.go(0);
     },
     shoppingshow() {
       this.$http
-        .post("/shoppingshow", {})
+        .post("/shoppingshow", {
+		userid:this.$route.query.userid
+	})
         .then((res) => {
+         
                     let a=0;
                    let b=0;
           for (let i = 0; i <res.data.length; i++) {
@@ -199,12 +235,17 @@ export default {
   margin-top: 20px;
   width: 350px;
   height: 50px;
-  line-height: 50px;
+  font-size: 20px;
+  /* line-height: 50px; */
   background-color: #0058a3;
   cursor: pointer;
   color: white;
   border: none;
   margin-left: 272px;
+}
+.payfor:hover{
+  background-color: #0058a3;
+  color: white;
 }
 .shoppdata {
   display: inline-block;

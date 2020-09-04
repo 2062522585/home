@@ -6,7 +6,6 @@
 			</li>
 			<li>{{item.brand}}</li>
 			<li>{{item.name}}</li>
-			<li>{{item.id}}</li>
 			<li>&yen;{{item.price}}</li>
 		</ul>
 	</div>
@@ -36,8 +35,15 @@
 		},
 		methods:{
 			getId(num){
+				let username=this.$route.query.username
 				this.$emit("myevent",num);
-				this.$router.push(`/shopping?id=${num}`);
+				this.$router.push({
+			 path: "/shopping",
+			 query:{
+				 id:num,
+				 username:username
+				}
+			 });
 			}
 		}
 	}

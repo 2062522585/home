@@ -9,5 +9,9 @@ class ProductsController extends Controller{
 	  const { ctx } = this;
 	  ctx.body=await this.ctx.service.products.getPro(ctx.request.query);
 	}
+  async getSort() {
+	  const { ctx } = this;
+	  ctx.body=await this.ctx.service.products.getSort();
+	}
 }
 module.exports = ProductsController;

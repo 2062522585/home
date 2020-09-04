@@ -18,8 +18,7 @@
 		},
 		watch:{
 			"$route.path":function(){
-				console.log(this.$route)
-				if(this.$route.path == "/userlogin" || this.$route.path == "/register"){
+				if(this.$route.path == "/userlogin" || this.$route.path == "/register" || this.$route.path == "/adlogin" || this.$route.path == "/admin"){
 					this.keepShow = false;
 				}else{
 					this.keepShow = true;

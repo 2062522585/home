@@ -17,14 +17,15 @@ class shoppingController extends Controller {
 		let brand=this.ctx.request.body.brand;
 		let num=this.ctx.request.body.num;
 		let zongjia=this.ctx.request.body.zongjia;
+		let userid=this.ctx.request.body.userid;
 		console.log(zongjia)
-		let res=await this.ctx.service.shoppingservice.shoppingadd(name,myimg,price,brand,num,zongjia);
+		let res=await this.ctx.service.shoppingservice.shoppingadd(name,myimg,price,brand,num,zongjia,userid);
 		this.ctx.response.body=res;
 		// console.log(res)
 }
    async shoppingshow(){
-	let id=this.ctx.request.body.id;
-	let res=await this.ctx.service.shoppingservice.shoppingshow();
+	let userid=this.ctx.request.body.userid;
+	let res=await this.ctx.service.shoppingservice.shoppingshow(userid);
 	this.ctx.response.body=res;
 	// console.log(res)
 }
@@ -44,7 +45,13 @@ async shoppingxiugai(){
 	this.ctx.response.body=res;
 	// console.log(res)
 }
+async shoppingclear(){
 
+	let res=await this.ctx.service.shoppingservice.shoppingclear();
+	// console.log(id,num)
+	this.ctx.response.body=res;
+	// console.log(res)
+}
 
 }
 

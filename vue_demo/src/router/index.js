@@ -4,6 +4,8 @@ import Home from '../views/home.vue'
 import shopping from '../views/shopping.vue'
 import payfor from "../components/shop/payfor"
 import entershopping from "../components/shop/entershopping"
+import adlogin from "../components/adlogin.vue"
+import adminpage from "../components/adminpage.vue"
 
 Vue.use(VueRouter)
 
@@ -45,11 +47,22 @@ const routes = [{
 		path: '/products',
 		component: () => import('../views/products.vue')
 	},
+	{ //¹ÜÀíÔ±
+		path: '/admin',
+		component: adminpage,
+		beforeEnter: function(to, from, next) {
+			// console.log(arguments)
+			if (sessionStorage.getItem("nologin")) {
+				next()
+			} else {
+				next("/adlogin")
+			}
+		}
+	},
 	{
-		path: '/person',
-		name: 'Person',
-		component: () => import('../views/person.vue')
-	}
+		path: "/adlogin",
+		component: adlogin
+	},
 ]
 
 const router = new VueRouter({

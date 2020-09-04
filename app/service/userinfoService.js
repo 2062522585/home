@@ -11,7 +11,7 @@ class UserinfoService extends Service {
 		let r = await this.ctx.app.mysql.query(sql, [newname,id]);
 		return r.affectedRows;//1
 	}
-	async updateUtel(newtel,id) {
+  async updateUtel(newtel,id) {
 		let sql = "update user set tel=? where id=?";
 		let r = await this.ctx.app.mysql.query(sql, [newtel,id]);
 		return r.affectedRows;//1

@@ -35,7 +35,7 @@
 	}
 </script>
 
-<style>
+<style scoped="scoped">
 	.fifth h2{
 		font-size: 26px;
 		text-align: left;

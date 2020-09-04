@@ -104,6 +104,8 @@ export default {
          
 
                open() {
+			let username=this.$route.query.username
+              if(username){
         this.$confirm('商品已加入购物车，是否进入购物车', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -115,17 +117,7 @@ export default {
             message: '已进入购物车!',
             
           })
-              this.$router.push({
-             path: "/payfor",
-        //       query:{
-        //  //  id:this.id,
-        //  num:this.num,
-        // brand:this.brand,
-        // price:this.price,
-        // name:this.name,
-        // myimg:this.myimg
-        // }
-    });
+              
         
           this.$http.post("/shoppingadd",{
               name:this.name,
@@ -133,11 +125,17 @@ export default {
               price:this.price,
               brand:this.brand,
               num:this.num,
-              zongjia:this.zongjia=this.num*this.price
-
+              zongjia:this.zongjia=this.num*this.price,
+              userid:this.$route.query.username
        }).then(res=>{
           //  alert(1)
-          console.log(res.data)
+		  this.$router.push({
+		           path: "/payfor",
+		    
+		      query:{
+                userid:this.$route.query.username
+              }
+		  });
            
        }).catch(err=>{
        console.log("axios访问失败")
@@ -153,6 +151,18 @@ export default {
         });
     
 
+}else{
+             let a=this.$route.query.id
+            //  console.log(859985,a)
+                alert("您还没有登录")
+               this.$router.push({
+                path:"/userlogin",
+                 query:{
+                     idname:2,
+                    ssss:this.$route.query.id   
+                 }
+            });
+           }
       }
        
        

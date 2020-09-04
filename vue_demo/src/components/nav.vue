@@ -10,15 +10,23 @@
 				<el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
 					<el-submenu index="1">
 						<template slot="title">活动</template>
-						<el-menu-item index="1-1">选项1</el-menu-item>
-						<el-menu-item index="1-2">选项2</el-menu-item>
-						<el-menu-item index="1-3">选项3</el-menu-item>
+						<el-menu-item index="1-1">9月特惠</el-menu-item>
+						<el-menu-item index="1-2">每月会员特惠</el-menu-item>
+						<el-menu-item index="1-3">更低价格</el-menu-item>
+						<el-menu-item index="1-4">我们的低价优选</el-menu-item>
 					</el-submenu>
 					<el-submenu index="2">
 						<template slot="title">房间</template>
-						<el-menu-item index="2-1">选项1</el-menu-item>
-						<el-menu-item index="2-2">选项2</el-menu-item>
-						<el-menu-item index="2-3">选项3</el-menu-item>
+						<el-menu-item index="2-1">卧室</el-menu-item>
+						<el-menu-item index="2-2">客厅</el-menu-item>
+						<el-menu-item index="2-3">厨房</el-menu-item>
+						<el-menu-item index="2-4">餐厅</el-menu-item>
+						<el-menu-item index="2-5">儿童房</el-menu-item>
+						<el-menu-item index="2-6">浴室</el-menu-item>
+						<el-menu-item index="2-7">书房和办公室</el-menu-item>
+						<el-menu-item index="2-8">门厅</el-menu-item>
+						<el-menu-item index="2-9">户外</el-menu-item>
+						<el-menu-item index="2-10">阳台</el-menu-item>
 					</el-submenu>
 					<el-submenu index="3">
 						<template slot="title">所有商品</template>
@@ -30,16 +38,34 @@
 								<el-menu-item index="3-1-3">椅子</el-menu-item>
 								<el-menu-item index="3-1-4">衣柜</el-menu-item>
 								<el-menu-item index="3-1-4">书柜</el-menu-item>
-								<el-menu-item index="3-1-4">屉柜</el-menu-item>
+								<el-menu-item index="3-1-4">抽屉柜</el-menu-item>
 							</div>
 						</el-submenu>
-						<el-menu-item index="3-2">选项2</el-menu-item>
-						<el-menu-item index="3-3">选项3</el-menu-item>
+						<el-submenu index="3-2">
+							<template slot="title">婴儿和儿童</template>
+							<div @click="handleShow">
+								<el-menu-item index="3-2-1">婴儿</el-menu-item>
+								<el-menu-item index="3-2-2">儿童</el-menu-item>
+							</div>
+						</el-submenu>
+						<el-submenu index="3-3">
+							<template slot="title">装饰品</template>
+							<div @click="handleShow">
+								<el-menu-item index="3-3-1">时钟</el-menu-item>
+								<el-menu-item index="3-3-2">镜子</el-menu-item>
+								<el-menu-item index="3-3-3">布告板</el-menu-item>
+								<el-menu-item index="3-3-4">纸品屋</el-menu-item>
+								<el-menu-item index="3-3-4">家用香氛</el-menu-item>
+								<el-menu-item index="3-3-4">节日装饰</el-menu-item>
+							</div>
+						</el-submenu>
 						<el-submenu index="3-4">
-							<template slot="title">选项4</template>
-							<el-menu-item index="3-4-1">选项1</el-menu-item>
-							<el-menu-item index="3-4-2">选项2</el-menu-item>
-							<el-menu-item index="3-4-3">选项3</el-menu-item>
+							<template slot="title">灯具照明</template>
+							<div @click="handleShow">
+								<el-menu-item index="3-4-1">装饰性灯具</el-menu-item>
+								<el-menu-item index="3-4-2">内置灯具</el-menu-item>
+								<el-menu-item index="3-4-3">LED照明灯泡</el-menu-item>
+							</div>
 						</el-submenu>
 					</el-submenu>
 					<el-menu-item index="4">灵感</el-menu-item>
@@ -75,9 +101,7 @@
 			};
 		},
 		methods: {
-			handleSelect(key, keyPath) {
-				console.log(key, keyPath);
-			},
+			handleSelect(key, keyPath) {},
 			handleShow(e) {
 				if (this.$route.fullPath.replace(this.$route.fullPath.substring(this.$route.fullPath.indexOf("keyword") + 8), this.$route
 						.query.keyword) == `/products?keyword=${e.target.innerHTML}`) {
