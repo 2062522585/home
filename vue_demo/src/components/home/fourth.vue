@@ -35,7 +35,7 @@
 				mysrc: fourth_a,
 				imgup: fourth_b,
 				imgdown: fourth_c,
-				keyword:'沙发',
+				keyword:'儿童',
 				
 			}
 		},
@@ -45,7 +45,7 @@
 		},
 		methods:{
 			getValue(val){
-				console.log(val);
+				// console.log(val);
 			}
 		},
 	}

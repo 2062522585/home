@@ -2,11 +2,13 @@
 	<div class="fifth">
 		<h2><strong>热销分类</strong></h2>
 		<ul >
-			<li v-for="item in mysrc">
-				<img :src="item"/>
+			<li v-for="item in imgArr" :key="item.id" @click="getVal(item.sort)">
+				<img :src="item.myimg"/>
 			</li>
 		</ul>
+		<div class="wrap_btn">
 		<btn>{{msg}}</btn>
+		</div>
 	</div>
 </template>
 
@@ -15,27 +17,36 @@
 	export default {
 		data(){
 			return {
-				mysrc:"",
-				message:"",
-				msg:'更多产品分类'
+				imgArr:[],
+				msg:'更多产品分类',
+				kw:""
 			}
 		},
 		components:{
 			btn
 		},
 		created(){
-			this.mysrc = this.$store.state.home.fifArr
+			this.$http.get('/getsort').then(res => {
+				this.imgArr = res.data;
+				// console.log(this.imgArr)
+			}).catch(e => {
+			})
 		},
-		methods: {
-			open() {
-				this.$message('更多期待');
-				// router.push(path   query:555 )
-			},
+		methods:{
+			getVal(a){
+				this.kw = a;
+				this.$router.push({
+				path:"/products",
+				 query:{
+					 keyword:this.kw
+				 }
+				})
+			}
 		}
 	}
 </script>
 
-<style scoped="scoped">
+<style>
 	.fifth h2{
 		font-size: 26px;
 		text-align: left;
@@ -54,5 +65,8 @@
 	}
 	.fifth{
 		margin-bottom: 80px;
+	}
+	.wrap_btn{
+		margin: 50px 43%;
 	}
 </style>

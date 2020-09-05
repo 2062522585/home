@@ -30,12 +30,13 @@
 	 h2{
 		font-size: 26px;
 		color: #000000;
-		margin: 50px 85px -20px;
+		margin: 60px 40px -10px;
 	}
 	.sixth_up ul {
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		margin-bottom: 80px;
 	}
 

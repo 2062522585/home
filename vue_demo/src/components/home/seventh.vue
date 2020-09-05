@@ -13,7 +13,7 @@
 <script>
 </script>
 
-<style scoped="scoped">
+<style>
 	.seventh{
 		text-align: left;
 	}

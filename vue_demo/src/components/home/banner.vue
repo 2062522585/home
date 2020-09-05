@@ -14,7 +14,7 @@
 	}
 </script>
 
-<style scoped="scoped">
+<style>
 	.banner{
 		width: 1280px;
 		margin: 50px auto;
@@ -24,7 +24,7 @@
 	 }
 	.banner .el-carousel__container{
 		 height: 700px;
-		 font-size: 50px;
+		 /* font-size: 50px; */
 	 }
 	 .el-carousel__item:nth-child(2n) {
 	    background-color: #99a9bf;

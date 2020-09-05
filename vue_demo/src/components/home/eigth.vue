@@ -76,7 +76,6 @@
 		margin: 0 auto;
 	}
 	
-
 	.el-collapse{
 		display: flex;
 		flex-wrap: wrap;
@@ -88,5 +87,8 @@
 	.el-collapse-item__content div{
 		width: 50%;
 		margin: 0 auto;
+	}
+	.el-collapse-item__content div{
+		text-indent: 2em;
 	}
 </style>

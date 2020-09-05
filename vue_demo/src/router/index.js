@@ -31,6 +31,11 @@ const routes = [{
 		component: () => import('../components/register.vue')
 	},
 	{
+		path: '/share',
+		name: 'Share',
+		component: () => import('../components/home/share.vue')
+	},
+	{
 		path: '/shopping',
 		name: 'Shopping',
 		component: shopping

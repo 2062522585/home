@@ -12,15 +12,6 @@ import third_d from '../../public/img/home/third-d.webp';
 import third_e from '../../public/img/home/third-e.jpg';
 import third_f from '../../public/img/home/third-f.webp';
 import third_g from '../../public/img/home/third-g.webp';
-import fifth_a from '../../public/img/home/fifth_a.webp';
-import fifth_b from '../../public/img/home/fifth_b.webp';
-import fifth_c from '../../public/img/home/fifth_c.webp';
-import fifth_d from '../../public/img/home/fifth_d.webp';
-import fifth_e from '../../public/img/home/fifth_e.webp';
-import fifth_f from '../../public/img/home/fifth_f.webp';
-import fifth_g from '../../public/img/home/fifth_g.webp';
-import fifth_h from '../../public/img/home/fifth_h.webp';
-import fifth_i from '../../public/img/home/fifth_i.webp';
 import sixth_a from '../../public/img/home/sixth_a.webp';
 import sixth_b from '../../public/img/home/sixth_b.webp';
 import sixth_c from '../../public/img/home/sixth_c.webp';
@@ -56,7 +47,6 @@ export default {
 			],
 		secArr:[sec_a,sec_b,sec_c],
 		thirdUpArr:[third_a,third_b,third_c,third_d,third_e,third_f,third_g],
-		fifArr:[fifth_a,fifth_b,fifth_c,fifth_d,fifth_e,fifth_f,fifth_g,fifth_h,fifth_i],
 		sixArr:[
 			{
 				id:1,
@@ -127,13 +117,6 @@ export default {
 	
 	},
 	mutations:{
-		// addShopList(state,item){
-		// 	if(state.shopList.has(item)){
-		// 		let count = state.shopList.get(item)
-		// 		state.shopList.set(item,count+1)
-		// 	} else {
-		// 		state.shopList.set(item,1)
-		// 	}
-		// }
+
 	}
 }

@@ -22,8 +22,7 @@
 		data() {
 			return {
 				mysrc: myimg,
-				keyword: '沙发',
-
+				keyword: '价格',
 			}
 		},
 		components: {
@@ -58,6 +57,6 @@
 		margin:50px auto ;
 	}
 	.sec_down div:last-child{
-		margin-top: 50px;
+		margin: 50px 43%;
 	}
 </style>

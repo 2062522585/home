@@ -29,7 +29,7 @@
 	export default {
 		data(){
 			return {
-				kw:'床',
+				kw:'家居',
 				mydata:""
 			}
 		},
@@ -57,12 +57,13 @@
 		text-align: left;
 		font-size: 26px;
 		color: #000000;
-		margin: 50px 85px -20px;
+		margin: 60px 10px -10px;
 	}
 	.third_up ul {
 		width: 100%;
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 	}
 
 	.third_up ul li {
@@ -88,10 +89,5 @@
 	.third_down{
 		margin-bottom: 80px;
 	}
-
-	
-
-
-
 	
 </style>
