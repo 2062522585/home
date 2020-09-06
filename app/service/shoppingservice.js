@@ -13,7 +13,6 @@ class shoppingService extends Service {
 
 		let sql = "insert into shopping(name,myimg,price,brand,num,zongjia,userid)values(?,?,?,?,?,?,?)"
 		let r = await this.ctx.app.mysql.query(sql, [name, myimg, price, brand, num, zongjia, userid]);
-		console.log(r)
 		return r.affectedRows;
 	}
 

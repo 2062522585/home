@@ -213,10 +213,7 @@
 				}
 			},
 			"color":function(){
-				this.arr = [];
-				for(let i = 0;i < this.productArr.length;i++){
-					// if(this.productArr[i].name.)
-				}
+				
 			}
 		},
 		data:function(){
@@ -244,7 +241,7 @@
 	}
 	
 	img{
-		width: 300px;
+		width: 250px;
 		height: 250px;
 	}
 	

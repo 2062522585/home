@@ -28,7 +28,7 @@ export default {
     // },
     methods:{
         adlogin(){
-            this.$http.post("http://localhost:7002/adlogin",{
+            this.$http.post("http://192.168.6.13:7002/adlogin",{
                 username:this.username,
                 pwd:this.pwd
             }).then((res)=>{

@@ -101,7 +101,7 @@
       },
       // 显示所有商品
       showAll(){
-        this.$http.get("http://localhost:7002/getAllProduct",{
+        this.$http.get("http://192.168.6.13:7002/getAllProduct",{
           params:{
             pid:this.pid
           }
@@ -128,7 +128,7 @@
           let newprice=row.price;
           let newkeyword=row.keyword;
           let newmsg=row.msg;
-          this.$http.post("http://localhost:7002/updateProduct",{
+          this.$http.post("http://192.168.6.13:7002/updateProduct",{
             id:row.id,
             newbrand:newbrand,
             newname:newname,
@@ -144,7 +144,7 @@
       //删除商品
       delProduct(myid){
           // console.log(myid.id);
-          this.$http.get("http://localhost:7002/delById",{
+          this.$http.get("http://192.168.6.13:7002/delById",{
             params:{
               id:myid.id
             }
@@ -164,7 +164,7 @@
           this.myclass = "hidden"; //隐藏
           //同时增加商品
           // console.log(this);
-          this.$http.post("http://localhost:7002/uploadFile",{
+          this.$http.post("http://192.168.6.13:7002/uploadFile",{
             brand:this.brand,
             name:this.name,
             price:this.price,

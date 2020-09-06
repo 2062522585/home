@@ -14,7 +14,7 @@
 	}
 </script>
 
-<style>
+<style scoped="scoped">
 	.banner{
 		width: 1280px;
 		margin: 50px auto;
@@ -22,6 +22,10 @@
 	 .banner img{
 		 width: 100%;
 	 }
+	/* .banner >>> .el-carousel__container{
+		 height: 700px;
+		 font-size: 50px;
+	 } */
 	.banner .el-carousel__container{
 		 height: 700px;
 		 /* font-size: 50px; */

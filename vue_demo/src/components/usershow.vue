@@ -22,7 +22,7 @@ export default {
     },
     methods: {
       showAll(){
-        this.$http.get("http://localhost:7002/getAllUser",{
+        this.$http.get("http://192.168.6.13:7002/getAllUser",{
           params:{
             pid:this.pid
           }

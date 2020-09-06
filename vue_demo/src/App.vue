@@ -24,11 +24,18 @@
 					this.keepShow = true;
 				}
 			}
+		},
+		mounted(){
+			if(this.$route.path == "/userlogin" || this.$route.path == "/register" || this.$route.path == "/adlogin" || this.$route.path == "/admin"){
+				this.keepShow = false;
+			}else{
+				this.keepShow = true;
+			}
 		}
 	}
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped="scoped">
 	#app {
 		font-family: Avenir, Helvetica, Arial, sans-serif;
 		-webkit-font-smoothing: antialiased;

@@ -32,7 +32,7 @@
 			}).catch(e => {
 			})
 		},
-		methods:{
+		methods: {
 			getVal(a){
 				this.kw = a;
 				this.$router.push({
@@ -46,7 +46,7 @@
 	}
 </script>
 
-<style>
+<style scoped="scoped">
 	.fifth h2{
 		font-size: 26px;
 		text-align: left;

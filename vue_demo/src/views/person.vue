@@ -3,7 +3,7 @@
 		<div>
 			<div class="welcomeBox">
 				<p>我的个人档案</p>
-				<h1>你好,{{uname}}</h1>
+				<p class="weluser">您好，{{uname}}</p>
 			</div>
 			<div class="content">
 				<div class="content-middle">
@@ -76,7 +76,10 @@
 					<div>
 						<i class="el-icon-discount"></i>
 						<span>你的优惠信息</span>
+            <div id="discount">
+              <p>暂无优惠卷</p>
 					</div>
+	</div>
 					<div></div>
 					<div></div>
 				</div>
@@ -86,7 +89,7 @@
 				<div class="usertitle">
 					<i class="el-icon-user"></i>
 					<span>账户</span>
-					<el-link icon="el-icon-edit">编辑</el-link>
+					<!-- <el-link icon="el-icon-edit">编辑</el-link> -->
 				</div>
 				<div>
 					<h3>个人信息</h3>
@@ -94,10 +97,12 @@
 						<!-- <div class="tooltip" v-on:click.stop v-if="show_tooltip">
 							</div> -->
 						<div>
-							<i class="el-icon-user"></i>
+              <i class="el-icon-user icon"></i>
+              <i class="el-icon-edit" @dblclick="dbTestname(item.id)">修改</i>
 							<div class="test" :class="{editing: isChecked }">
 								<div class="view">
-									<label @dblclick="dbTestname(item.id)">{{ item.username }}</label>
+								<label>{{ item.username }}</label>
+									<!-- <label @dblclick="dbTestname(item.id)">{{ item.username }}</label> -->
 								</div>
 								<input v-myfoucs="isChecked" class="edit" type="text" v-model="inputStrname" @blur="inputStredname()" />
 							</div>
@@ -105,7 +110,8 @@
 					</div>
 					<hr />
 					<div>
-						<i class="el-icon-phone-outline"></i>
+            <i class="el-icon-phone-outline icon"></i>
+            <i class="el-icon-edit" @dblclick="dbTesttel(item.id)">修改</i>
 						<div>
 							<div class="test" :class="{editing: isCheckedtel }">
 								<div class="view">
@@ -121,7 +127,8 @@
 					//<el-link icon="el-icon-edit">编辑</el-link>
 
 					<div>
-						<i class="el-icon-location-outline"></i>
+            <i class="el-icon-location-outline icon"></i>
+              <i class="el-icon-edit" @dblclick="dbTestadr(item.id)">修改</i>
 						<div>
 							<div class="test" :class="{editing: isCheckedadr }">
 								<div class="view">
@@ -134,7 +141,8 @@
 				</div>
 				<hr />
 				<div>
-					<i class="el-icon-message"></i>
+          <i class="el-icon-message icon"></i>
+              <i class="el-icon-edit" @dblclick="dbTestmail(item.id)">修改</i>
 					<div>
 						<div class="test" :class="{editing: isCheckedmail }">
 							<div class="view">
@@ -145,6 +153,7 @@
 					</div>
 				</div>
 			</div>
+<hr class="liner2" />
 		</div>
 	</div>
 </template>
@@ -294,9 +303,11 @@
 			inputStredmail() {
 				console.log(this.inputStrmail); //打印修改的内容
 				this.isCheckedmail = false;
+ var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
 				if (this.inputStrmail === "") {
-					alert("请输入地址");
-				} else {
+        alert("请输入邮箱");
+      } else {
+        if (reg.test(this.inputStrmail)) {
 					this.$http
 						.post("/updateMail", {
 							newmail: this.inputStrmail,
@@ -308,6 +319,9 @@
 						.catch((e) => {
 							console.log(e);
 						});
+        } else {
+          alert("请输入正确的邮箱");
+        }
 				}
 			},
 		},
@@ -383,7 +397,7 @@
 	.cardsitem-2,
 	.cardsitem-2-1 {
 		float: left;
-		margin-top: 10px;
+		/* margin-top: 10px; */
 	}
 
 	.el-icon-document-checked:before,
@@ -402,17 +416,18 @@
 	}
 
 	.cardsitem-1 {
-		margin-top: 5px;
+		margin-top: 15px;
 	}
 
 	.cardsitem-2-1>p {
-		margin-top: 5px;
+		margin-top: -15px;
 	}
 
 	.cardsitem-2 {
-		margin-left: 20px;
+		/* margin-left: 20px; */
 		color: rgb(78, 76, 76);
 		margin-top: -6px;
+width: 425px;
 	}
 
 	.cardsitem-2-2 {
@@ -423,19 +438,23 @@
 
 	.content-bottom {
 		width: 71%;
-		height: 400px;
+		height: 355px;
 		margin-top: 20px;
 		background: rgb(245, 245, 245);
 	}
-
-	.liner {
+.liner,
+.liner2 {
+  margin-top: 25px;
+  margin-bottom: 25px;
 		height: 8px;
 		width: 71%;
 		background-color: #eff7f7;
 		border: 0;
 		border-top: 1px solid rgba(0, 0, 0, 0.1);
 	}
-
+.liner2 {
+  margin-bottom: 100px;
+}
 	.usermsg {
 		width: 71%;
 		margin: 0 auto;
@@ -480,4 +499,23 @@
 	.test .edit {
 		display: none;
 	}
+.test {
+  display: inline-block;
+  margin: -2px 15px 15px;
+}
+.icon {
+  float: left;
+}
+#discount {
+  font-size: 20px;
+  margin: 0 auto;
+  margin-left: 40%;
+  margin-top: 100px;
+}
+.el-icon-edit{
+  font-size: 12px;
+}
+.weluser{
+  font-size: 25px;
+}
 </style>

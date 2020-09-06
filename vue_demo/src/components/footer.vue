@@ -7,9 +7,10 @@
 				{{item}}
 			</div>
 		</el-card>
-	<el-row>
+		<el-row>
 			<span @click="weibo(mywb)"><el-button circle><img :src="fArr[0]" alt=""/></el-button><span>微博</span></span>
 			<span  @click="weixin"><el-button circle><img :src="fArr[1]" alt="" /></el-button><span>微信</span></span>
+			<!-- <el-button></el-button><router-link to="" @click="weibo()">优酷</router-link> -->
 		</el-row>
 		<router-view></router-view>
 		<p class="end">© Inter IKEA Systems B.V 1999-2020</p>
@@ -122,6 +123,9 @@
 		padding: 2px;
 	}
 
+	/* .el-button:last-of-type {
+		display: none;
+	} */
 
 	.el-button img {
 		width: 24px;
